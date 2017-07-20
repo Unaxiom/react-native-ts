@@ -1,0 +1,32 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "taskName": "tsc",
+            "type": "shell",
+            "command": "tsc",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "args": ["-p", "."],
+            "presentation": {
+                "echo": false,
+                "reveal": "never",
+                "focus": false
+            }
+        },
+        {
+            "taskName": "Ship Icons",
+            "type": "shell",
+            "command": "yo rn-toolbox:assets --icon ./resources/icon.png",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "new"
+            },
+            "problemMatcher": []
+        }
+    ]
+}

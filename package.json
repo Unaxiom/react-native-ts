@@ -1,0 +1,17 @@
+{
+  "name": "react-native-ts",
+  "version": "0.0.1",
+  "description": "Package that integrates TypeScript with React Native.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Saroj Kaashyap, Pratheek Adidela",
+  "license": "MIT",
+  "directories": {
+    "dependencies": "dependencies"
+  },
+  "dependencies": {
+    "mkdirp": "^0.5.1"
+  }
+}
