@@ -1,6 +1,6 @@
 {
   "name": "react-native-ts",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Package that integrates TypeScript with React Native.",
   "main": "index.js",
   "bin": {
