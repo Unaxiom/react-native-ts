@@ -5,6 +5,7 @@ const process = require('process');
 const path = require('path');
 const fs = require('fs');
 const mkdir = require('mkdirp');
+const isbinary = require('isbinaryfile');
 
 const reactNativeTSTemplate = 'reactNativeTSTemplate';
 const curDir = process.cwd();
@@ -53,12 +54,33 @@ for (var file of filesList) {
     // console.log("Write path is ", writePath);
     // console.log("-------------------------------------");
     var buf = fs.readFileSync(readPath);
-    var fileContent = buf.toString();
+    // Check if file is binary here
+    if (isbinary.sync(readPath)) {
+        // File is binary ---> copy it directly
+        fs.writeFileSync(writePath, buf);
+    } else {
+        var fileContent = buf.toString();
     
-    fileContent = replaceall(reactNativeTSTemplate, appName, fileContent);
+        fileContent = replaceall(reactNativeTSTemplate, appName, fileContent);
 
-    fs.writeFileSync(writePath, fileContent);
+        fs.writeFileSync(writePath, fileContent);
+    }
 }
 
-// console.log("----\n\n\nDirectories are:\n", directoriesList);
+
+// Append to gradle.properties here 
+// Check if android folder is available
+var androidFolder = path.join(curDir, "android");
+if (fs.existsSync(androidFolder)) {
+    // Open gradle.properties here in append mode
+    var gradleFile = path.join(androidFolder, "gradle.properties");
+    // org.gradle.parallel=true
+    // org.gradle.daemon=true
+    var propertiesToAppend = "org.gradle.parallel=true\norg.gradle.daemon=true";
+    try {
+        fs.appendFileSync(gradleFile, propertiesToAppend);
+    } catch (e) {}
+}
+
+
 console.log("Done!");

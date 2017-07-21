@@ -1,10 +1,10 @@
 {
   "name": "react-native-ts",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Package that integrates TypeScript with React Native.",
   "main": "index.js",
   "bin": {
-    "react-native-ts" : "./index.js"
+    "react-native-ts": "./index.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -15,6 +15,7 @@
     "dependencies": "dependencies"
   },
   "dependencies": {
+    "isbinaryfile": "^3.0.2",
     "mkdirp": "^0.5.1"
   }
 }
